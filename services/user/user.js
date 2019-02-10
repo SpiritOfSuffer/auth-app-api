@@ -1,9 +1,14 @@
 const User = require('../../entities/User');
-const bcrypt = require('bcryptjs');
 
 
-module.exports = async function findOneByEmail(req) {
+module.exports = async function findOneByEmail(email) {
     return await User.findOne({
-        email: req.body.email
+        email: email
+    })
+}
+
+module.exports = async function findOneByName(name) {
+    return await User.findOne({
+        name: name
     })
 }

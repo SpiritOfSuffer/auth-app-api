@@ -1,11 +1,12 @@
 const mongoose = require('mongoose');
+const shortid = require('shortid');
 
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
     name: {
         type: String,
-        required: true
+        default: shortid.generate
     },
     email: {
         type: String,
