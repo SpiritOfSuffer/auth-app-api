@@ -5,8 +5,9 @@ const jwt = require('jsonwebtoken');
 const passport = require('passport');
 const validateRegisterInput = require('../../validators/register');
 const validateLoginInput = require('../../validators/login');
-const findOneByEmail = require('../../services/user/user');
-const findOneByName = require('../../services/user/user');
+//const findOneByEmail = require('../../services/user/user');
+//const findOneByName = require('../../services/user/user');
+const userService = require('../../services/user/user');
 const registerUserDTO = require('../../dtos/user/register');
 const loginUserDTO = require('../../dtos/user/login');
 
@@ -19,7 +20,7 @@ router.post('/register', async function(req, res) {
         return await res.status(400).json(errors);
     }
 
-    await findOneByEmail(req.body.email)
+    await userService.findOneByEmail(req.body.email)
         .then(async user => {
             if(user){
                 return await res.status(400).json({
@@ -56,7 +57,7 @@ router.post('/login', async (req, res) => {
         return await res.status(400).json(errors);
     }
     const loginUser = loginUserDTO(req.body);
-    await findOneByName(loginUser.name)
+    await userService.findOneByName(loginUser.name)
         .then(async user => {
             if(!user) {
                 errors.name = 'User not found'

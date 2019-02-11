@@ -15,10 +15,10 @@
     "express": "^4.16.4",
     "gravatar": "^1.8.0",
     "jsonwebtoken": "^8.4.0",
-    "mailer": "^0.6.7",
     "mongoose": "^5.4.11",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
+    "sendmail": "^1.4.1",
     "shortid": "^2.2.14",
     "validator": "^10.11.0"
   },
